@@ -68,4 +68,20 @@ public class ExampleTest {
 
         System.out.println(result);
     }
+    
+    @Test
+void example1(){
+    JSONObject jo = new JSONObject();
+    Map<String, String> m = new LinkedHashMap<String,String>();
+    m.put("id", "ANTHEM");
+    m.put("referenceNumber", "1234");
+    jo.put("source",m);
+    JSONArray ja= new JSONArray();
+    m = new LinkedHashMap<String,String>();
+    m.put("type", "auth_exchane");
+    m.put("metadata", "");
+    ja.add(m);
+    jo.put("events",ja);
+    System.out.println(jo);
+}
 }
