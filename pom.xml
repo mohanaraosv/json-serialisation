@@ -23,6 +23,7 @@
     <logback.version>1.2.3</logback.version>
     <commons.lang3.version>3.9</commons.lang3.version>
     <assertj.version>3.15.0</assertj.version>
+    <json.simple.version>1.1.1</json.simple.version>
   </properties>
 
   <dependencies>
@@ -83,6 +84,12 @@
       <artifactId>assertj-core</artifactId>
       <version>${assertj.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>${json.simple.version}</version>
     </dependency>
 
   </dependencies>

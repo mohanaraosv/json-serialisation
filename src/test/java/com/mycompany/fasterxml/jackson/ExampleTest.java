@@ -5,8 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -68,20 +72,30 @@ public class ExampleTest {
 
         System.out.println(result);
     }
-    
+
     @Test
-void example1(){
-    JSONObject jo = new JSONObject();
-    Map<String, String> m = new LinkedHashMap<String,String>();
-    m.put("id", "ANTHEM");
-    m.put("referenceNumber", "1234");
-    jo.put("source",m);
-    JSONArray ja= new JSONArray();
-    m = new LinkedHashMap<String,String>();
-    m.put("type", "auth_exchane");
-    m.put("metadata", "");
-    ja.add(m);
-    jo.put("events",ja);
-    System.out.println(jo);
-}
+    void usingJsonSampleTest() {
+        JSONObject jsonSource = new JSONObject();
+        Map<String, String> example = new LinkedHashMap<>();
+        example.put("id", "ANTHEM");
+        example.put("referenceNumber", "1234");
+        jsonSource.put("source", example);
+
+        JSONArray metadataArray = new JSONArray();
+        Map<String, JSONObject> metadata = new LinkedHashMap<>();
+        JSONObject childObject = new JSONObject();
+        childObject.put("key", "payload");
+        childObject.put("value", "SVNBKjAwKi");
+        metadata.put("metadata", childObject);
+        metadataArray.add(metadata);
+
+        JSONArray eventsArray = new JSONArray();
+        Map<String, Object> events = new LinkedHashMap<>();
+        events.put("type", "auth_exchane");
+        events.put("metadata", metadataArray);
+        eventsArray.add(events);
+
+        jsonSource.put("events", eventsArray);
+        System.out.println(jsonSource);
+    }
 }
