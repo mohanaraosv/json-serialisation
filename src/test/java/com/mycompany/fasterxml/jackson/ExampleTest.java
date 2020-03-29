@@ -82,12 +82,10 @@ public class ExampleTest {
         jsonSource.put("source", example);
 
         JSONArray metadataArray = new JSONArray();
-        Map<String, JSONObject> metadata = new LinkedHashMap<>();
         JSONObject childObject = new JSONObject();
         childObject.put("key", "payload");
         childObject.put("value", "SVNBKjAwKi");
-        metadata.put("metadata", childObject);
-        metadataArray.add(metadata);
+        metadataArray.add(childObject);
 
         JSONArray eventsArray = new JSONArray();
         Map<String, Object> events = new LinkedHashMap<>();
